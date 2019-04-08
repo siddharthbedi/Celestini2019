@@ -33,7 +33,7 @@ y = df.iloc[:,[17]].values
 
 
 #binarizing for multiclass SVM
-Y = label_binarize(y, classes=[0, 1, 2])
+Y = label_binarize(y, classes=[1, 2,3,4,5,6,7])
 n_classes = Y.shape[1]
 
 
@@ -50,7 +50,7 @@ X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=.5,
 #classifier = OneVsRestClassifier(SVC(kernel = 'linear', random_state = 0))
 #classifier = OneVsRestClassifier(SVC(kernel = 'poly', random_state = 0))
 #classifier = OneVsRestClassifier(SVC(kernel = 'rbf', random_state = 0))
-classifier = OneVsRestClassifier(SVC(kernel = 'sigmoid', random_state = 0))
+classifier = OneVsRestClassifier(SVC(kernel = 'poly', probability =True ,random_state = 0))
 
 
 
@@ -87,17 +87,23 @@ print('Average precision score, micro-averaged over all classes: {0:0.2f}'
 
 
 
-#plotting the required curve
-plt.figure()
-plt.step(recall['micro'], precision['micro'], color='b', alpha=0.2,
-         where='post')
-plt.fill_between(recall["micro"], precision["micro"], alpha=0.2, color='b')
 
+
+
+#plotting the required curve for all classes
+plt.plot(recall["micro"], precision["micro"],
+         label='micro-average Precision-recall curve(linear) (area = {0:0.2f})'
+               ''.format(average_precision["micro"]))
+for i in range(n_classes):
+    plt.plot(recall[i], precision[i],
+             label='Precision-recall curve of class(Linear) {0} (area = {1:0.2f})'
+                   ''.format(i, average_precision[i]))
+
+plt.xlim([0.0, 1.0])
+plt.ylim([0.0, 1.05])
 plt.xlabel('Recall')
 plt.ylabel('Precision')
-plt.ylim([0.0, 1.05])
-plt.xlim([0.0, 1.0])
-plt.title(
-    'Average precision score, micro-averaged over all classes: AP={0:0.2f}'
-    .format(average_precision["micro"]))
+plt.title('Extension of Precision-Recall curve to multi-class(poly)')
+plt.legend(loc = 'centre left')
+plt.show()
 
