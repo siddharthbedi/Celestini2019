@@ -1,9 +1,9 @@
 # Celestini2019
 Github repository for Celestini 2019 qualification round
 Team Members : 
-  Anurag Gandhi     anuraggandhi29@gmail.com 
-  Naman Goel        namangoyal.1998@gmail.com 
-  Siddharth Bedi    siddharth.bedi09@gmail.com
+  * Anurag Gandhi     anuraggandhi29@gmail.com 
+  * Naman Goel        namangoyal.1998@gmail.com 
+  * Siddharth Bedi    siddharth.bedi09@gmail.com
 
 
 The repository cointains 4 sections:
