@@ -47,7 +47,7 @@ X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=.5,
 
 
 # Run required classifier
-classifier = OneVsRestClassifier(SVC(kernel = 'linear', random_state = 0))
+classifier = OneVsRestClassifier(SVC(kernel = 'linear',probability =True , random_state = 0))
 #classifier = OneVsRestClassifier(SVC(kernel = 'poly', random_state = 0))
 #classifier = OneVsRestClassifier(SVC(kernel = 'rbf', random_state = 0))
 #classifier = OneVsRestClassifier(SVC(kernel = 'poly', probability =True ,random_state = 0))
